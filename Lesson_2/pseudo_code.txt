@@ -7,9 +7,9 @@ Casual Pseudo-Code:
 1. A method that returns the sum of two integers
 
 Define a method name that accepts two parameters (number1, number2)
-Add the first and second integer and store in a variable called result
-Return result to the user
+Add the first and second integer
 Call the method passing it two intergers as arguments
+Print the method prior to calling
 
 2. A method that takes an array of strings, and returns a string that is all those strings concatenated together
 
@@ -22,7 +22,8 @@ Return the concatenated string
 
 Make an array of integers
 Define a method that will iterate over each integer
-and for every other integer, returns a new array
+and for every other integer, stores in a new array
+Print the new array
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,10 +33,9 @@ Formal Pseudo-Code:
 
 DEFINE a method called sum that accepts (num1, num2)
 that adds both number1 and number2
-SET the answer to a variable called result
-PRINT result
+END method
+PRINT/Call the method and passing two integers as arguments
 
-CALL the method passing in two integers as arguments
 END
 
 2. 
@@ -55,10 +55,10 @@ END
 3. 
 START
 
-SET array_num = [1, 2, 3, 4, 5]
-DEFINE a method that iterates over each ingeger in the array
-SKIP every other integer
-SET every other integer to a new_array
-PRINT each new_array
+SET array_num = [1, 2, 3, 4, 5, 6]
+DEFINE a method that iterates over each integer in the array_num
+ITERATE over every integer
+SET for each even integer to new_array
+PRINT new_array
 
 END
