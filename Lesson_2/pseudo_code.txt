@@ -1,0 +1,64 @@
+Write out pseudo-code (both casual and formal) that does the following:
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Casual Pseudo-Code:
+
+1. A method that returns the sum of two integers
+
+Define a method name that accepts two parameters (number1, number2)
+Add the first and second integer and store in a variable called result
+Return result to the user
+Call the method passing it two intergers as arguments
+
+2. A method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+Make an array of strings
+Define a method that iterates through each string and concatenates them together
+Return the concatenated string
+
+
+3. A method that takes an array of integers, and returns a new array with every other element
+
+Make an array of integers
+Define a method that will iterate over each integer
+and for every other integer, returns a new array
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+Formal Pseudo-Code:
+
+1. START
+
+DEFINE a method called sum that accepts (num1, num2)
+that adds both number1 and number2
+SET the answer to a variable called result
+PRINT result
+
+CALL the method passing in two integers as arguments
+END
+
+2. 
+START
+
+SET array_string = ["string", "string", "string"]
+SET iterator = 1
+
+DEFINE a method that takes one parameter (string)
+	FOR each string in the array
+	splice each string to be added to one string???
+PRINT new_string or new_array?
+
+
+END
+
+3. 
+START
+
+SET array_num = [1, 2, 3, 4, 5]
+DEFINE a method that iterates over each ingeger in the array
+SKIP every other integer
+SET every other integer to a new_array
+PRINT each new_array
+
+END
