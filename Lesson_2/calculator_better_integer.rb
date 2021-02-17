@@ -3,7 +3,7 @@ def prompt(message)
 end
 
 def valid_number?(num)
-  num.to_i() != 0
+  num.to_i.to_s == num # num to an integer then to a string, does it equal num?
 end
 
 def operation_to_message(op)

@@ -2,8 +2,20 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+# def valid_number?(num)
+#   num.to_i() != 0
+# end
+
 def valid_number?(num)
-  num.to_i() != 0
+  integer?(num) || float?(num)
+end
+
+def integer?(num)
+  num.to_i.to_s == num
+end
+
+def float?(num)
+  num.to_f.to_s == num
 end
 
 def operation_to_message(op)
@@ -88,11 +100,11 @@ loop do # Main loop
   # CASE statement process:
   result = case operation
            when '1'
-            num1.to_i + num2.to_i
+            num1.to_f + num2.to_f
            when '2'
-            num1.to_i - num2.to_i
+            num1.to_f - num2.to_f
            when '3'
-            num1.to_i * num2.to_i
+            num1.to_f * num2.to_f
            when '4'
             num1.to_f / num2.to_f
            end

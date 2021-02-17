@@ -1,0 +1,61 @@
+welcome: "Welcome to Calculator! Please enter your name: "
+valid_name: "Make sure to use a valid name."
+first_num: "What's the first number?"
+second_num: "What's the second number?"
+not_valid: "Hmmm...that doesn't look like a valid number."
+must_choose: "Must choose 1, 2, 3, or 4"
+repeat: "Do you want to perform another calculation (Y or N)"
+goodbye: "Thank you for using this calculator tool. Goodbye!"
+
+# To add multiple languages, we would restructure the file like this:
+# en:
+#   welcome: "Welcome to Calculator! Enter your name:"
+#   valid_name: "Make sure to enter a valid name."
+# es:
+#   welcome: "Bienvenido a la calculadora! Entre su nombre:"
+#   valid_name: "Asegúrese de entrar un nombre válido."
+
+
+
+#In our calculator_config.rb file, we would change the MESSAGES tag to this:
+# MESSAGES['es']['welcome']  
+
+
+
+# Because we'll need the language key every time we reference the message, let's move that to a method we can call. That way, we can pass in the language to the method, which can then reference the MESSAGES hash.
+# at top of file after initializing MESSAGES
+
+# def messages(message, lang='en')
+#   MESSAGES[lang][message]
+# end
+
+
+
+# We can now do this with our program:
+# # english
+# prompt(messages('welcome'))       # => Welcome to Calculator! Enter your name:
+
+# # english
+# prompt(messages('welcome', 'en')) # => Welcome to Calculator! Enter your name:
+
+# # spanish
+# prompt(messages('welcome', 'es')) # => Bienvenido a la calculadora! Entre su nombre:
+
+
+# To add a default language to our code:
+## top of calculator.rb
+# LANGUAGE = 'en'
+
+
+# And whenever you call the prompt, you can do this:
+# prompt(messages('welcome', LANGUAGE))
+
+
+# If you think that's too verbose, you could move the code around a bit and modify the prompt method:
+# def prompt(key)
+#   message = messages(key, LANGUAGE)   # make sure the "messages" method is declared above this line
+#   Kernel.puts("=> #{message}")
+# end
+
+# # now you can just do:
+# prompt('welcome')
