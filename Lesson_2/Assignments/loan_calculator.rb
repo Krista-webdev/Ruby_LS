@@ -7,12 +7,12 @@ puts "Welcome to the Loan Calculator! Lets find out your monthly payment.\n"
 loop do
   loan_amount = ''
   loop do
-    prompt "Please enter the total amount of your loan:"
+    puts "Please enter the total amount of your loan:"
     loan_amount = gets.chomp
-    if valid_number?(loan_amount)
+    if valid_number?(loan_amount) && loan_amount.to_i > 0
       break
     else
-      puts "Please enter only integers, no punctuation or symbols."
+      puts "Please only enter a positive number, no punctuation or symbols included."
     end
   end
 
@@ -21,11 +21,11 @@ loop do
   loop do
     puts "What is the annual interest rate (APR) for this loan?"
     apr = gets.chomp
-    if valid_number?(apr)
+    if valid_number?(apr) && apr.to_i > 0 
       monthly_interest = (apr.to_f / 100) / 12
       break
     else
-      puts "Please only enter a whole number, no symbols."
+      puts "Please only enter a whole, positive number, no symbols included."
     end
   end
 
@@ -34,11 +34,11 @@ loop do
   loop do
     puts "How many years will the loan be for?"
     duration = gets.chomp
-    if valid_number?(duration)
+    if valid_number?(duration) && duration.to_i > 0
       total_months = duration.to_i * 12
       break
     else
-      puts "Please enter a whole number, no characters or symbols."
+      puts "Please enter a whole, positive number, no characters or symbols included."
     end
   end
 
@@ -46,9 +46,13 @@ loop do
                     (monthly_interest / (1 -
                     (1 + monthly_interest)**(-total_months)))
   puts "Your monthly payment will be: $#{monthly_payment.round(2)}\n\n"
-  puts "Would you like to calculate another loan? Type Y or N"
+  puts "Would you like to calculate another loan? Type Y or N."
   answer = gets.chomp
-  break unless answer.downcase().start_with?('y')
+  if answer.downcase == "y" || answer.downcase == "yes"
+    puts "Let's start with another calculation..."
+  else
+    break 
+  end
 end
 
 puts "Thank you for using the Loan Calculator! Good bye!"
