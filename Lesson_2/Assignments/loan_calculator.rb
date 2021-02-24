@@ -4,7 +4,7 @@ end
 
 puts "Welcome to the Loan Calculator! Lets find out your monthly payment.\n"
 
-loop do
+loop do # main loop
   loan_amount = ''
   loop do
     puts "Please enter the total amount of your loan:"
@@ -12,7 +12,7 @@ loop do
     if valid_number?(loan_amount) && loan_amount.to_i > 0
       break
     else
-      puts "Please only enter a positive number, no punctuation or symbols included."
+      puts "Only enter a positive number - no punctuation/symbols."
     end
   end
 
@@ -21,11 +21,11 @@ loop do
   loop do
     puts "What is the annual interest rate (APR) for this loan?"
     apr = gets.chomp
-    if valid_number?(apr) && apr.to_i > 0 
+    if valid_number?(apr) && apr.to_i > 0
       monthly_interest = (apr.to_f / 100) / 12
       break
     else
-      puts "Please only enter a whole, positive number, no symbols included."
+      puts "Please only enter a whole, positive number - no symbols."
     end
   end
 
@@ -38,7 +38,7 @@ loop do
       total_months = duration.to_i * 12
       break
     else
-      puts "Please enter a whole, positive number, no characters or symbols included."
+      puts "Only enter a whole, positive number - no characters/symbols."
     end
   end
 
@@ -51,7 +51,7 @@ loop do
   if answer.downcase == "y" || answer.downcase == "yes"
     puts "Let's start with another calculation..."
   else
-    break 
+    break
   end
 end
 
