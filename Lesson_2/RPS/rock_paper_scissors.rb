@@ -6,13 +6,13 @@ end
 
 def display_results(player, computer) # our commented out if/else statement below is instead recreated in a new method using the same logic:
   if (player == "rock" && computer == "scissors") ||
-    (player == "paper" && computer == "rock") ||
-    (player == "scissors" && computer == "paper")
-        prompt("You won!")
+     (player == "paper" && computer == "rock") ||
+     (player == "scissors" && computer == "paper")
+    prompt("You won!")
   elsif (player == "scissors" && computer == "rock") ||
         (player == "rock" && computer == "paper") ||
         (player == "paper" && computer == "scissors")
-          prompt("Sorry, the Computer won!")
+    prompt("Sorry, the Computer won!")
   else
     prompt("It's a tie!")
   end
