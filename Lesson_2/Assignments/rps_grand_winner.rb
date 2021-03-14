@@ -1,47 +1,112 @@
-# Keep score of the player's and computer's wins. When either the player or computer reaches five wins, the match is over, and the winning player becomes the grand winner. Don't add your incrementing logic to display_results. Keep your methods simple; they should perform one logical task — no more, no less. think about eliminating repetitive code from the winning combinations method by DRYing your code. Write the "natural" version of the method using a bunch of conditions, then identify the repetitive code in that method. Once you have it, write a method that you can call with different arguments.
-
+# Variables
 VALID_CHOICES = ["rock", "paper", "scissors", "spock", "lizard"]
 
+WINNING_CHOICES = {
+  rock: ["lizard", "scissors"],
+  paper: ["rock", "spock"],
+  scissors: ["lizard", "paper"],
+  spock: ["scissors", "rock"],
+  lizard: ["paper", "spock"]
+}
+
+score = {
+  player: 0,
+  computer: 0
+}
+
+# Methods
 def prompt(message)
   puts("=> #{message}")
 end
 
+def line_break
+  prompt("--------------------------------")
+end
+
+def greeting
+  prompt("Welcome to the game Rock, Paper, Scissors, Lizard or Spock!")
+  prompt("To be the Grand Winner, reach 5 wins first!")
+  line_break
+end
+
 def win?(first, second)
-  result = (first == "rock" && second == "scissors") ||
-           (first == "paper" && second == "rock") ||
-           (first == "scissors" && second == "paper") ||
-           (first == "rock" && second == "lizard") ||
-           (first == "lizard" && second == "spock") ||
-           (first == "spock" && second == "scissors") ||
-           (first == "scissors" && second == "lizard") ||
-           (first == "lizard" && second == "paper") ||
-           (first == "paper" && second == "spock") ||
-           (first == "spock" && second == "rock")
-  result
+  WINNING_CHOICES[first.to_sym].include?(second)
 end
 
 def display_results(player, computer)
   if win?(player, computer)
-    prompt("You won!")
+    prompt("You won this round!")
   elsif win?(computer, player)
-    prompt("Sorry, the Computer won!")
+    prompt("Sorry, the Computer won this round!")
   else
     prompt("It's a tie!")
   end
 end
 
-loop do # main execution loop
-  choice = ""
-  loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    choice = gets.chomp
-
-    if VALID_CHOICES.include?(choice)
-      break
-    else
-      prompt("That's not a valid choice.")
-    end
+def score_tracker(player, computer, score)
+  if win?(player, computer)
+    score[:player] += 1
+    prompt("You get 1 point!")
+  elsif win?(computer, player)
+    score[:computer] += 1
+    prompt("The computer gets 1 point!")
+  else
+    prompt("No points awarded.")
   end
+end
+
+def confirm_winner(score)
+  loop do
+    if score[:player] == 5
+      line_break
+      prompt "Congratulations, you are the Grand Winner!"
+      reset_total(score)
+    elsif score[:computer] == 5
+      line_break
+      prompt "Sorry, the Computer is the Grand Winner :("
+      reset_total(score)
+    end
+    break
+  end
+end
+
+def reset_total(score)
+  score[:player] = 0
+  score[:computer] = 0
+end
+
+def play_again?
+  answer = ""
+  loop do
+    line_break
+    prompt("Would you like to play again? Y or N")
+    answer = gets.chomp.downcase
+    break if valid_response?(answer)
+    prompt("That is not a valid response")
+  end
+  answer == "y"
+end
+
+def valid_response?(answer)
+  ["y", "n"].include? answer
+end
+
+def player_choice(choice)
+  loop do
+    prompt("Make your choice: rock, paper, scissors, spock or lizard:")
+    choice << gets.chomp.downcase
+    break if VALID_CHOICES.include?(choice)
+    prompt("That's not a valid choice.")
+  end
+end
+
+# Game
+greeting
+
+loop do
+  choice = ""
+
+  player_choice(choice)
 
   computer_choice = VALID_CHOICES.sample
 
@@ -49,9 +114,11 @@ loop do # main execution loop
 
   display_results(choice, computer_choice)
 
-  prompt("Do you want to play again? Y or N")
-  answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  score_tracker(choice, computer_choice, score)
+
+  confirm_winner(score)
+
+  break unless play_again?
 end
 
 prompt("Thank you for playing. Goodbye!")
