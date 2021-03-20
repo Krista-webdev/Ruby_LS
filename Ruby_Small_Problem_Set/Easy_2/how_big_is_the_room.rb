@@ -13,7 +13,7 @@ Enter the width of the room in meters:
 7
 The area of the room is 70.0 square meters (753.47 square feet).
 =end
-CONVERSION = 10.7639
+CONVERSION = 10.7639 # better to explain what this number is/does, so use a name like SQMETERS_TO_SQFEET instead
 puts "Enter the length of the room in meters: "
 length = gets.to_f
 puts "Enter the width of the room in meters: "
