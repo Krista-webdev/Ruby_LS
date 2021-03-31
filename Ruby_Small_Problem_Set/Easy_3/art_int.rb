@@ -1,27 +1,27 @@
 # Write a program that prompts the user for two positive integers, and then prints the results of the following operations on those two numbers: addition, subtraction, product, quotient, remainder, and power. Do not worry about validating the input.
 
-def addition(first_number, second_number)
-  first_number + second_number
+def addition(first, second)
+  first + second
 end
 
-def subtraction(first_number, second_number)
-  first_number - second_number
+def subtraction(first, second)
+  first - second
 end
 
-def product(first_number, second_number)
-  first_number * second_number
+def product(first, second)
+  first * second
 end
 
-def quotient(first_number, second_number)
-  first_number / second_number
+def quotient(first, second)
+  first / second
 end
 
-def remainder(first_number, second_number)
-  first_number % second_number
+def remainder(first, second)
+  first % second
 end
 
-def power(first_number, second_number)
-  first_number ** second_number
+def power(first, second)
+  first ** second
 end
 
 puts "Enter the first number:"

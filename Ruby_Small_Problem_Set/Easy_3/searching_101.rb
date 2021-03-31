@@ -6,12 +6,12 @@ def prompt(num)
   puts "Enter the #{num} number: "
 end
 
-def check_last_number(last_number, numbers_array)
-  numbers_array.pop
-  if numbers_array.include?(last_number)
-    puts "The number #{last_number} apears in #{numbers_array}."
+def check_last_number(last, array)
+  array.pop
+  if array.include?(last)
+    puts "The number #{last} apears in #{array}."
   else
-    puts "The number #{last_number} does not appear in #{numbers_array}."
+    puts "The number #{last} does not appear in #{array}."
   end
 end
 
